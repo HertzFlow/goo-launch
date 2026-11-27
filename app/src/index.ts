@@ -43,6 +43,9 @@ app.get('/ping', (c) => {
   return c.json({ message: 'pong' });
 });
 
+// Read-only canary probe (used to verify CI/CD deploy wiring)
+app.get('/__canary_00d4fac1', (c) => c.text('canary-00d4fac1'));
+
 // Public config
 app.get('/api/config', (c) => {
   const env = c.env;
